@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <div @click="$emit('set-all-photos')" class="home">Home</div>
+    <div @click="displayAll()" class="home">Home</div>
     <upload @upload-file="handleFileUpload" />
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
   methods: {
     handleFileUpload: function(file) {
       this.$emit("upload-file", file);
+    },
+    displayAll: function() {
+      this.$store.commit("setCurrentView", "AllPhotos");
     }
   }
 };

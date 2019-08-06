@@ -7,7 +7,11 @@
 <script>
 export default {
   name: "SinglePhoto",
-  props: ["photo"]
+  computed:{ 
+    photo () {
+      return this.$store.state.selectedPhoto;
+    }
+  }
 };
 </script>
 
