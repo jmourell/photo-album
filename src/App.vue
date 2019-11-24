@@ -1,21 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <h1>{{ title }}</h1>
-    <navbar />
+    <Navbar />
+    <AllPhotos v-if="currentView === 'AllPhotos'" />
+    <SinglePhoto v-else-if="currentView === 'SinglePhoto'" />
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar";
+import AllPhotos from "./components/AllPhotos";
+import SinglePhoto from "./components/SinglePhoto";
 
 export default {
   name: "App",
   components: {
-    navbar: Navbar
+    Navbar,
+    AllPhotos,
+    SinglePhoto
   },
   data: () => ({
-    title: "Photo Upload App"
+    title: "Photo Upload App",
+    currentView: "AllPhotos",
+    photos: [],
+    selectedPhoto: ""
   })
 };
 </script>
