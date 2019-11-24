@@ -10,6 +10,7 @@
 import Navbar from "./components/Navbar";
 import AllPhotos from "./components/AllPhotos";
 import SinglePhoto from "./components/SinglePhoto";
+import { mapState } from "vuex";
 
 export default {
   name: "App",
@@ -18,12 +19,13 @@ export default {
     AllPhotos,
     SinglePhoto
   },
-  data: () => ({
-    title: "Photo Upload App",
-    currentView: "AllPhotos",
-    photos: [],
-    selectedPhoto: ""
-  })
+  computed: mapState({
+    currentView: state => state.currentView
+  }),
+  mounted() {
+    this.$store.dispatch("loadImages");
+  },
+  data: () => ({})
 };
 </script>
 
