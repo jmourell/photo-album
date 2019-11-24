@@ -17,7 +17,9 @@ const store = new Vuex.Store({
       setTimeout(() => {
         const photos = [
           "https://i.imgur.com/GURx9rK.png",
-          "https://i.imgur.com/diWk7uJ.png"
+          "https://i.imgur.com/diWk7uJ.png",
+          "https://i.imgur.com/PHJyxp0.jpg",
+          "https://media2.giphy.com/media/x0npYExCGOZeo/giphy.webp"
         ];
 
         //udpate photos to fetched photos
