@@ -56,10 +56,10 @@ export function getSingleObject(key) {
 
 export async function getAllObjects() {
   const objectList = await listObjects();
-  const finalObjects = await Promise.all(
+  const base64Images = await Promise.all(
     objectList.map(obj => getSingleObject(obj.Key))
   );
-  return finalObjects;
+  return base64Images.map(img => `data:image/jpeg;base64,${img}`);
 }
 
 export function saveObject(file) {

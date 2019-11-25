@@ -14,10 +14,7 @@ const store = new Vuex.Store({
   actions: {
     loadImages: ({ commit }) => {
       getAllObjects()
-        .then(base64Images => {
-          const photos = base64Images.map(
-            img => `data:image/jpeg;base64,${img}`
-          );
+        .then(photos => {
           commit("setImages", { photos });
         })
         .catch(() => {
