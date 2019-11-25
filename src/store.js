@@ -7,12 +7,11 @@ const store = new Vuex.Store({
   state: {
     title: "Photo Upload App",
     currentView: "AllPhotos",
-    photos: [],
+    photos: null,
     selectedPhoto: ""
   },
   actions: {
     loadImages: ({ commit }) => {
-      console.log("loadImages action called");
       //TODO: server call to fetch images
       setTimeout(() => {
         const photos = [
@@ -24,7 +23,7 @@ const store = new Vuex.Store({
 
         //udpate photos to fetched photos
         commit("setImages", { photos });
-      }, 1000);
+      }, 2000);
     }
   },
   mutations: {
