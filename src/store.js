@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { getAllObjects } from "../utils";
 
 Vue.use(Vuex);
 
@@ -12,18 +13,10 @@ const store = new Vuex.Store({
   },
   actions: {
     loadImages: ({ commit }) => {
-      //TODO: server call to fetch images
-      setTimeout(() => {
-        const photos = [
-          "https://i.imgur.com/GURx9rK.png",
-          "https://i.imgur.com/diWk7uJ.png",
-          "https://i.imgur.com/PHJyxp0.jpg",
-          "https://media2.giphy.com/media/x0npYExCGOZeo/giphy.webp"
-        ];
-
-        //udpate photos to fetched photos
+      getAllObjects().then(base64Images => {
+        const photos = base64Images.map(img => `data:image/jpeg;base64,${img}`);
         commit("setImages", { photos });
-      }, 2000);
+      });
     }
   },
   mutations: {
