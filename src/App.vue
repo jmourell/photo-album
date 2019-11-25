@@ -3,6 +3,7 @@
     <Navbar />
     <AllPhotos v-if="currentView === 'AllPhotos'" />
     <SinglePhoto v-else-if="currentView === 'SinglePhoto'" />
+    <Error v-else-if="currentView === 'Error'" />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Navbar from "./components/Navbar";
 import AllPhotos from "./components/AllPhotos";
 import SinglePhoto from "./components/SinglePhoto";
+import Error from "./components/Error";
 import { mapState } from "vuex";
 
 export default {
@@ -17,7 +19,8 @@ export default {
   components: {
     Navbar,
     AllPhotos,
-    SinglePhoto
+    SinglePhoto,
+    Error
   },
   computed: mapState({
     currentView: state => state.currentView

@@ -13,10 +13,16 @@ const store = new Vuex.Store({
   },
   actions: {
     loadImages: ({ commit }) => {
-      getAllObjects().then(base64Images => {
-        const photos = base64Images.map(img => `data:image/jpeg;base64,${img}`);
-        commit("setImages", { photos });
-      });
+      getAllObjects()
+        .then(base64Images => {
+          const photos = base64Images.map(
+            img => `data:image/jpeg;base64,${img}`
+          );
+          commit("setImages", { photos });
+        })
+        .catch(() => {
+          commit("changeView", { view: "Error" });
+        });
     }
   },
   mutations: {

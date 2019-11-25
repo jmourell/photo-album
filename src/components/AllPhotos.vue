@@ -2,7 +2,11 @@
   <div class="container">
     <h1 class="title">{{ title }}</h1>
     <div class="page-content" v-if="photos">
-      <div class="thumbnail-container" v-for="(photo, index) in photos" :key="index">
+      <div
+        class="thumbnail-container"
+        v-for="(photo, index) in photos"
+        :key="index"
+      >
         <img class="thumbnail" :src="photo" />
       </div>
     </div>
