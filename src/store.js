@@ -15,19 +15,23 @@ const store = new Vuex.Store({
     loadImages: ({ commit }) => {
       getAllObjects()
         .then(photos => {
-          commit("setImages", { photos });
+          commit("setImages", photos);
         })
         .catch(() => {
-          commit("changeView", { view: "Error" });
+          const errorView = "Error";
+          commit("changeView", errorView);
         });
     }
   },
   mutations: {
-    changeView: (state, { view }) => {
+    changeView: (state, view) => {
       state.currentView = view;
     },
-    setImages: (state, { photos }) => {
+    setImages: (state, photos) => {
       state.photos = photos;
+    },
+    setSelectedPhoto: (state, selectedPhoto) => {
+      state.selectedPhoto = selectedPhoto;
     }
   }
 });

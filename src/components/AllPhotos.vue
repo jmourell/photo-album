@@ -4,6 +4,7 @@
     <div class="page-content" v-if="photos">
       <div
         class="thumbnail-container"
+        @click="handlePictureClick"
         v-for="(photo, index) in photos"
         :key="index"
       >
@@ -26,7 +27,15 @@ export default {
   },
   data: () => ({
     title: "All Photos"
-  })
+  }),
+  methods: {
+    handlePictureClick: function(e) {
+      const selectedPhoto = e.target.src;
+      this.$store.commit("setSelectedPhoto", selectedPhoto);
+      const singlePhotoView = "SinglePhoto";
+      this.$store.commit("changeView", singlePhotoView);
+    }
+  }
 };
 </script>
 
@@ -50,6 +59,12 @@ export default {
   box-shadow: 2px 5px 4px #888;
   padding: 5px;
 }
+
+.thumbnail-container:hover {
+  box-shadow: 2px 5px 4px #88f;
+  border-color: #77f;
+}
+
 .thumbnail {
   max-width: 100%;
   max-height: 100%;
