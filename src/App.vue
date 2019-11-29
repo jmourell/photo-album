@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <AllPhotos v-if="currentView === 'AllPhotos'" />
+    <GridPhotos v-if="currentView === 'AllPhotos'" />
     <SinglePhoto v-else-if="currentView === 'SinglePhoto'" />
     <Error v-else-if="currentView === 'Error'" />
   </div>
@@ -11,6 +11,7 @@
 import Navbar from "./components/Navbar";
 import AllPhotos from "./components/AllPhotos";
 import SinglePhoto from "./components/SinglePhoto";
+import GridPhotos from "./components/GridPhotos";
 import Error from "./components/Error";
 import { mapState } from "vuex";
 
@@ -19,6 +20,7 @@ export default {
   components: {
     Navbar,
     AllPhotos,
+    GridPhotos,
     SinglePhoto,
     Error
   },
@@ -33,7 +35,22 @@ export default {
 </script>
 
 <style>
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 #app {
+  width: 100%;
+  height: 100%;
   text-align: center;
 }
 </style>
